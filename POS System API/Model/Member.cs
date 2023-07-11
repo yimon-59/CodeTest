@@ -5,6 +5,6 @@
         public string MemberCode { get; set; }
 
         public int Point { get; set; }
-        public List<Product> ProductItems { get; set; }
+        public List<Products> ProductItems { get; set; }
     }
 }
