@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using MySqlConnector;
-using NuGet.Configuration;
 using POS_System_API.DAO;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
 using System;
+using Microsoft.EntityFrameworkCore;
+using POS_System_API.Service.Interface;
+using POS_System_API.Service;
+using POS_System_API.Repository.Interface;
+using POS_System_API.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,9 +17,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DataContext>();
-//builder.Services.AddTransient<MySqlConnection>(_ =>
-//    new MySqlConnection(builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddScoped<IPointService, PointService>();
+var builders = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+
+var configuration = builders.Build();
+var connectionString = configuration.GetConnectionString("Default");
+
+// Register the data context with dependency injection
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(connectionString));
 builder.Services.AddAuthentication(options =>
 {
 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

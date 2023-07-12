@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MySqlConnector;
-using POS_System_API.DAO;
+﻿using POS_System_API.DAO;
 using POS_System_API.Model;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace POS_System_API.Repository
 {
