@@ -29,5 +29,19 @@ namespace MobileAPI.Repository
                 _mobileDBContext.SaveChanges();
             }
         }
+
+        public PurchaseHistory GetPurchaseHistory(int id)
+        {
+            var entity = _mobileDBContext.PurchaseHistory.FirstOrDefault(a => a.MemberId == id);
+            PurchaseHistory purchaseHistory = new PurchaseHistory();
+            if (entity != null)
+            {
+                purchaseHistory.PurchaseId = entity.PurchaseId;
+                purchaseHistory.MemberId = entity.MemberId;
+                purchaseHistory.PurchaseDetails = entity.PurchaseDetails;
+                purchaseHistory.Date = entity.Date;
+            }
+            return purchaseHistory;
+        }
     }
 }

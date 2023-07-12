@@ -1,12 +1,8 @@
-using Google.Authenticator;
 using Microsoft.AspNetCore.Mvc;
 using MobileAPI.Model;
 using MobileAPI.Service.IService;
-using QRCoder;
 using System.Security.Cryptography;
 using System.Text;
-using QRCoder;
-using ZXing.QrCode.Internal;
 
 namespace MobileAPI.Controllers
 {
@@ -53,6 +49,14 @@ namespace MobileAPI.Controllers
             activeSessions.Add((Convert.ToString(model.MemberId)), model.DeviceId);
 
             return Ok(new { Message = "Login successful." });
+        }
+
+        [HttpGet("GetPurchaseHistory")]
+        public IActionResult GetPurchaseHistory(int id)
+        {
+            _memberService.GetPurchaseHistory(id);
+
+            return Ok();
         }
 
         string GenerateRandomOTP(int length)

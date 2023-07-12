@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GoogleAuthenticator" Version="3.1.1-beta1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.6.23329.4" />
+    <PackageReference Include="QRCoder" Version="1.4.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repository\IRepository\" />
-    <Folder Include="Service\IService\" />
+    <PackageReference Include="ZXing.Net" Version="0.16.9" />
   </ItemGroup>
 
 </Project>

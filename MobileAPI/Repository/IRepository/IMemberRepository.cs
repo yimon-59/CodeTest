@@ -6,5 +6,6 @@ namespace MobileAPI.Repository.IRepository
     {
         void RegisterMember(Member memberModel);
         void SaveOTPCodeToDatabase(int id, string otp);
+        PurchaseHistory GetPurchaseHistory(int id);
     }
 }

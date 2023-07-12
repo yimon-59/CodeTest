@@ -21,5 +21,10 @@ namespace MobileAPI.Service
         {
             _memberRepository.SaveOTPCodeToDatabase(id,otp);
         }
+
+        public PurchaseHistory GetPurchaseHistory(int id)
+        {
+            return _memberRepository.GetPurchaseHistory(id);
+        }
     }
 }

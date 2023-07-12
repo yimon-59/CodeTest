@@ -6,5 +6,6 @@ namespace MobileAPI.Service.IService
     {
         void RegisterMember(Member member);
         void SaveOTPCodeToDatabase(int id, string otp);
+        PurchaseHistory GetPurchaseHistory(int id);
     }
 }

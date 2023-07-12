@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MobileAPI.DAO;
+using MobileAPI.Repository;
+using MobileAPI.Repository.IRepository;
+using MobileAPI.Service;
 using MobileAPI.Service.IService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +12,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IMemberService, IMemberService>();
 var builders = new ConfigurationBuilder().AddJsonFile("appsettings.json");
 
 var configuration = builders.Build();
